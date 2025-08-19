@@ -1,12 +1,33 @@
-# React + Vite
+# 🎬 Movie Explorer App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React application that allows users to search for movies using the [Watchmode API](https://api.watchmode.com/). Built with debounced input, dynamic API integration, and clean UI components — without routing to individual movie pages.
 
-Currently, two official plugins are available:
+![Uploading Screenshot_19-8-2025_105425_localhost.jpeg…]()
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+
+- 🔍 **Live Search**: Search movies by title using Watchmode's `/search` endpoint.
+- ⏱️ **Debounced Input**: Optimized search with 500ms debounce to reduce unnecessary API calls.
+- 🎥 **Movie List**: Displays basic movie info like title, year, and type.
+- ⚡ **Error Handling**: Graceful fallback for failed API requests or empty results.
+- 🧼 **Clean UI**: Modular components for maintainability and scalability.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** (with Hooks)
+- **use-debounce** (for input optimization)
+- **Watchmode API** (for movie data)
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/your-username/movie-explorer.git
+cd movie-explorer
+npm install
