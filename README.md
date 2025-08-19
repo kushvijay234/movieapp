@@ -29,6 +29,6 @@ A responsive React application that allows users to search for movies using the 
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/movie-explorer.git
+git clone https://github.com/kushvijay234/movieapp.git
 cd movie-explorer
 npm install
