@@ -30,5 +30,5 @@ A responsive React application that allows users to search for movies using the 
 
 ```bash
 git clone https://github.com/kushvijay234/movieapp.git
-cd movie-explorer
+cd movieapp
 npm install
