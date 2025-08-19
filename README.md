@@ -2,7 +2,8 @@
 
 A responsive React application that allows users to search for movies using the [Watchmode API](https://api.watchmode.com/). Built with debounced input, dynamic API integration, and clean UI components — without routing to individual movie pages.
 
-![Uploading Screenshot_19-8-2025_105425_localhost.jpeg…]()
+![App Screenshot](https://github.com/kushvijay234/movieapp/blob/master/public/screenshot.jpeg?raw=true)
+
 
 
 ---
