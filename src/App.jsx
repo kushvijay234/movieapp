@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDebounce } from 'use-debounce';
 import Search from "./components/Search";
 import MovieCard from "./components/MovieCard";
-import { VITE_WATCHMODE_API_KEY } from "../key";
 
 const API_BASE_URL = "https://api.watchmode.com/v1/releases/?apiKey=";
 
@@ -11,19 +10,23 @@ const App = () => {
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
   const [errorMessage, setErrorMessage] = useState("");
   const [movieList, setMovieList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // Fixed typo
+  const [isLoading, setIsLoading] = useState(false);
 
-  
+  const VITE_WATCHMODE_API_KEY = import.meta.env.VITE_WATCHMODE_API_KEY;
   
    const fetchMovies = async (query = "") => {
-    setIsLoading(true); // Fixed typo
+    setIsLoading(true);
     setErrorMessage("");
     try {
+      const apiKey = VITE_WATCHMODE_API_KEY;
+      if (!apiKey) {
+        throw new Error("API key is missing. Check your .env file.");
+      }
       const endpoint = query
-        ? `https://api.watchmode.com/v1/autocomplete-search/?apiKey=${VITE_WATCHMODE_API_KEY}&search_field=name&search_value=${encodeURIComponent(
+        ? `https://api.watchmode.com/v1/autocomplete-search/?apiKey=${apiKey}&search_field=name&search_value=${encodeURIComponent(
             query
           )}`
-        : `${API_BASE_URL}${VITE_WATCHMODE_API_KEY}&types=movie&limit=20`;
+        : `${API_BASE_URL}${apiKey}&types=movie&limit=20`;
       const response = await fetch(endpoint);
 
       if (!response.ok) {
@@ -31,19 +34,14 @@ const App = () => {
       }
       const data = await response.json();
 
-      if (data.Response === "False") {
-        setErrorMessage(data.Error || "Failed to fetch movies");
-        setMovieList([]);
-        return;
-      }
       const results = query ? data.results : data.releases;
       setMovieList(results || []);
       
     } catch (error) {
       console.error(`Error fetching Movies : ${error}`);
-      setErrorMessage(`Error Fetching Movies. Please try again later.`);
+      setErrorMessage(error.message || `Error Fetching Movies. Please try again later.`);
     } finally {
-      setIsLoading(false); // Fixed value and typo
+      setIsLoading(false);
     }
   };
 
